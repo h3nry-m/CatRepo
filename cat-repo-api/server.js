@@ -9,13 +9,12 @@ const app = express();
 
 // allows other origins to access this api
 app.use(cors());
-
 // parse incoming request bodies with JSON
 app.use(express.json());
-
 // log request info
 app.use(morgan("tiny"));
 
+// routes
 app.use("/auth", authRoutes);
 
 // if the endpoint doesn't match any endpoints - will call this middleware to send to NotFoundError
@@ -24,7 +23,7 @@ app.use((req, res, next) => {
 });
 
 // if reach this point then generic error handling
-app.use((error, req, res, next) => {
+app.use((err, req, res, next) => {
   const status = err.status || 500;
   const message = err.message;
 

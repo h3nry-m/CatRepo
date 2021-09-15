@@ -21,6 +21,7 @@ function getDatabaseUri() {
   );
 }
 
+// means it'll hash it by 2^13
 const BCRYPT_WORK_FACTOR = 13;
 
 console.log("Cat Repo:".red);
